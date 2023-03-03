@@ -52,8 +52,20 @@ export default class Service {
 
       // True if the eye is closed
       const blinked = leftEAR <= EAR_THRESHOLD && rightEAR <= EAR_THRESHOLD
+
+
+      let blinkedDirection = null
+
+      if (leftEAR >= EAR_THRESHOLD && rightEAR <= EAR_THRESHOLD) {
+        blinkedDirection = "esquerda aberto"
+      }
+      else if (leftEAR <= EAR_THRESHOLD && rightEAR <= EAR_THRESHOLD) {
+        blinkedDirection = "esquerda aberto"
+      }
+
+      console.log('piscou o olho', blinkedDirection, '<------')
       if (!blinked) continue
-      if(!shouldRun()) continue
+      if (!shouldRun()) continue
 
       return blinked
     }
